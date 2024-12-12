@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Головна{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2 class="mb-4">Наші продукти</h2>
+    </div>
+</div>
+<div class="row">
+    {% for weapon in weapons %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ weapon.name }}</h5>
+                <p class="card-text">{{ weapon.description|truncatechars:100 }}</p>
+                <p class="card-text fw-bold">Ціна: {{ weapon.price }} грн</p>
+                {% if user.is_authenticated %}
+                <a href="{% url 'add_to_cart' weapon.id %}" class="btn btn-success">Додати в кошик</a>
+                {% else %}
+                <p class="text-muted">Увійдіть, щоб додавати товари в кошик</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

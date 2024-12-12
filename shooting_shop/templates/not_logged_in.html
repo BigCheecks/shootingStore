@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Потрібен вхід{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="alert alert-warning" role="alert">
+        {{ message }}
+    </div>
+    <a href="{% url 'login' %}" class="btn btn-primary">Увійти</a>
+</div>
+{% endblock %}
